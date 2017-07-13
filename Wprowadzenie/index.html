@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pl" ng-app="TestApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Angular - wprowadzenie</title>
+  <script type ="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+  <script type="text/javascript">
+    var app = angular.module('TestApp', []);
+    app.controller('TestController',['$scope', function($scope)
+    {
+      this.data = "Hello People!";
+      $scope.var = "Test $scope";
+      $scope.summary = "";
+      $scope.add = function()
+      {
+            $scope.summary = '';
+            angular.forEach($scope.tests, function(item, index) {
+              if (item["selected"] == true)
+                $scope.summary += item["name"] + ', ';
+              if (index == $scope.tests.length-1)
+                $scope.summary = $scope.summary.slice(0, -2);
+            });
+      }
+      $scope.alert = function()
+      {
+           alert("Error");
+      }
+      $scope.tests = [
+        {
+          'name': 'Test A',
+          'selected': false
+        },
+        {
+          'name': 'Test B',
+          'selected': false
+        },
+        {
+          'name': 'Test C',
+          'selected': false
+        },
+        {
+          'name': 'Test D',
+          'selected': false
+        }
+      ];
+      $scope.customers = [
+        {
+          'name': 'Karol',
+          'age': '26'
+        },
+        {
+          'name': 'Filip',
+          'age': '22'
+        },
+        {
+          'name': 'Ola',
+          'age': '15'
+        }
+      ];
+    }]);
+  </script>
+</head>
+<body ng-controller="TestController as test">
+  <input type="text" ng-model="variable"/>
+  <h1>Hello {{variable | uppercase}}!</h1>
+  <hr/>
+
+  <h2>{{test.data}}</h2>
+  <h3>{{var}}</h3>
+  <hr/>
+
+  <label ng-repeat="test in tests"><input type="checkbox" ng-model="test.selected" ng-click="add()"/>{{test.name}}</label>
+  <p>Summary: {{summary}}</p>
+  <hr/>
+
+  Change my name: <input type="text" ng-model="customers[0]['name']" />
+  <ul>
+    <li ng-repeat="customer in customers">{{customer.name}} ({{customer.age}})</li>
+  </ul>
+  <hr />
+
+  <input type="button" ng-click="alert()" value="Show me error" />
+</body>
+</html>
