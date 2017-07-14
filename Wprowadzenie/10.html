@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pl" ng-app="itemApp">
+  <meta charset="UTF-8">
+  <title>Example - 10</title>
+  <script type ="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+  <script>
+      const nameApp = angular.module('itemApp', []);
+      nameApp.controller('itemCtrl', function($scope){
+        $scope.customers = [
+          {
+            "name": "Piłka1",
+            "img": "http://upload.wikimedia.org/wikipedia/commons/4/4f/Soccer_ball_animated.svg"
+          },
+          {
+            "name": "Piłka2",
+            "img": "http://upload.wikimedia.org/wikipedia/commons/4/4f/Soccer_ball_animated.svg"
+          },
+        ];
+      });
+  </script>
+</head>
+<body ng-controller="itemCtrl">
+  <ul>
+    <li ng-repeat="customer in customers">
+      <p>{{customer.name}}</p>
+      <img ng-src="{{customer.img}}" alt="">
+    </li>
+  </ul>
+</body>
+</html>

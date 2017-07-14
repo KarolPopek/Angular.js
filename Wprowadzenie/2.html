@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pl" ng-app="helloApp">
+  <meta charset="UTF-8">
+  <title>Example - 2</title>
+  <script type ="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+  <script>
+      var nameApp = angular.module('helloApp', []);
+      nameApp.controller('helloCtrl', function($scope)
+    {
+      $scope.hello = 'Hello World';
+    });
+  </script>
+</head>
+<body ng-controller="helloCtrl">
+  {{hello}}
+</body>
+</html>

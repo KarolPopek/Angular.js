@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pl" ng-app="helloApp">
+  <meta charset="UTF-8">
+  <title>Example - 5</title>
+  <script type ="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+  <script>
+      var nameApp = angular.module('helloApp', []);
+      nameApp.controller('helloCtrl', function($scope){
+        $scope.hello = ['Hello'];
+
+        $scope.addWord = function(){
+          $scope.hello.push($scope.newWord);
+          $scope.newWord = "";
+        };
+      });
+  </script>
+</head>
+<body ng-controller="helloCtrl">
+  <ul>
+    <li ng-repeat="word in hello">{{word}}</li>
+  </ul>
+  <form ng-submit="addWord()">
+    <input type="text" ng-model="newWord"/>
+    <input type="submit" value="Dodaj"/>
+  </form>
+</body>
+</html>

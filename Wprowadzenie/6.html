@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pl" ng-app="helloApp">
+  <meta charset="UTF-8">
+  <title>Example - 6</title>
+  <script type ="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+  <script>
+      const nameApp = angular.module('helloApp', []);
+      nameApp.controller('helloCtrl', function($scope){
+        $scope.hello = ['Hello'];
+
+        $scope.addWord = function(){
+          $scope.hello.push($scope.newWord);
+          $scope.newWord = "";
+        };
+
+        $scope.removeWord = function(word){
+          const i = $scope.hello.indexOf(word);
+          $scope.hello.splice(i, 1);
+        };
+      });
+  </script>
+</head>
+<body ng-controller="helloCtrl">
+  <ul>
+    <li ng-repeat="word in hello">
+      <p>{{word}}</p>
+      <a href="" ng-click="removeWord()">x</a>
+    </li>
+  </ul>
+  <form ng-submit="addWord()">
+    <input type="text" ng-model="newWord"/>
+    <input type="submit" value="Dodaj"/>
+  </form>
+
+</body>
+</html>

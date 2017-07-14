@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pl" ng-app="helloApp">
+  <meta charset="UTF-8">
+  <title>Example - 9</title>
+  <script type ="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+  <script>
+      const nameApp = angular.module('helloApp', []);
+      nameApp.controller('helloCtrl', function($scope){
+        $scope.customers = [
+          {
+            'name': 'Karol',
+            'age': '26'
+          },
+          {
+            'name': 'Filip',
+            'age': '22'
+          },
+          {
+            'name': 'Ola',
+            'age': '15'
+          }
+        ];
+      });
+  </script>
+</head>
+<body ng-controller="helloCtrl">
+  <input type="text" ng-model="search">
+  <ul>
+    <button ng-click="reverse=true" ng-init="reverse=false">Reverse</button>
+    <li ng-repeat="customer in customers | filter: search | orderBy: 'name': reverse">
+      <p>{{customer.name}}({{customer.age}})</p>
+    </li>
+  </ul>
+</body>
+</html>
