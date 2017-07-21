@@ -1,0 +1,22 @@
+.container {
+  width: 400px;
+  min-height: 200px;
+  height: auto;
+  margin: 100px auto;
+  background-color: #999;
+  padding: 15px;
+}
+
+h2 {
+  text-align: center;
+  font-size: 33px;
+  text-transform: uppercase;
+}
+
+.delete-icon {
+  cursor: pointer;
+}
+
+.checked {
+  text-decoration: line-through;
+}
